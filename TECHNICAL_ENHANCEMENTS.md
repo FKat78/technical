@@ -79,8 +79,8 @@ python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```bash
 # 📁 Depuis le dossier racine (nouveau terminal)
 cd technical_front
-npm install    # Si première fois
-npm run dev
+yarn install    # Si première fois
+yarn run dev
 ```
 
 **✅ Frontend accessible sur :** `http://localhost:5173` (ou port suivant si occupé)
@@ -91,7 +91,7 @@ npm run dev
 cd technical_server && python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 
 # Terminal 2 - Frontend  
-cd technical_front && npm run dev
+cd technical_front && yarn run dev
 ```
 
 ---
