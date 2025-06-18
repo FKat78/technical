@@ -1,35 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+import ProjectsList from './components/ProjectsList';
+import ProjectDetails from './components/ProjectDetails';
+
+type FontSize = 'small' | 'medium' | 'large';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [selectedProjectId, setSelectedProjectId] = useState<number | null>(null);
+  const [fontSize, setFontSize] = useState<FontSize>('medium');
+
+  const handleProjectSelect = (projectId: number) => {
+    setSelectedProjectId(projectId);
+  };
+
+  const handleBack = () => {
+    setSelectedProjectId(null);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className={`app font-size-${fontSize}`}>
+      {/* Header */}
+      <header className="app-header">
+        <div className="header-content">
+          <h1>🎬 Système de Gestion UGC Cinema</h1>
+          <div className="font-controls">
+            <label htmlFor="font-size">📝 Taille de police:</label>
+            <select
+              id="font-size"
+              value={fontSize}
+              onChange={(e) => setFontSize(e.target.value as FontSize)}
+            >
+              <option value="small" className='text-sm text-black' >🔍 Petite</option>
+              <option value="medium" className='text-base text-black'>📖 Moyenne</option>
+              <option value="large" className='text-lg text-black'>🔍 Grande</option>
+            </select>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="app-main">
+        {selectedProjectId ? (
+          <ProjectDetails 
+            projectId={selectedProjectId} 
+            onBack={handleBack} 
+          />
+        ) : (
+          <ProjectsList onProjectSelect={handleProjectSelect} />
+        )}
+      </main>
+
+      {/* Footer */}
+      <footer className="app-footer">
+        <p>💻 Système de Gestion UGC Cinema - Entretien Technique</p>
+        <p>🚀 React TypeScript + FastAPI Python | 📊 Interface moderne et responsive</p>
+      </footer>
+    </div>
+  );
 }
 
-export default App
+export default App;
