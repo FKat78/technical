@@ -58,6 +58,44 @@ J’ai essayé d’aller au plus loin en 1h30, tout en gardant une app fluide, p
 
 ---
 
+## 🚀 Instructions de lancement
+
+### 📋 **Prérequis**
+- **Python 3.13** installé
+- **Node.js 18+** installé  
+- **npm ou yarn** installé
+
+### ⚙️ **Backend (FastAPI)**
+```bash
+# 📁 Depuis le dossier racine
+cd technical_server
+python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+```
+
+**✅ Backend accessible sur :** `http://127.0.0.1:8000`  
+**📖 Documentation API :** `http://127.0.0.1:8000/docs`
+
+### 🎨 **Frontend (React + Vite)**
+```bash
+# 📁 Depuis le dossier racine (nouveau terminal)
+cd technical_front
+npm install    # Si première fois
+npm run dev
+```
+
+**✅ Frontend accessible sur :** `http://localhost:5173` (ou port suivant si occupé)
+
+### 🔗 **Lancement Rapide Complet**
+```bash
+# Terminal 1 - Backend
+cd technical_server && python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+
+# Terminal 2 - Frontend  
+cd technical_front && npm run dev
+```
+
+---
+
 ## 🔮 Idées d’améliorations futures (si j'avais eu plus de temps)
 - Filtres avancés par plages de dates
 - Système de pagination pour les gros volumes
