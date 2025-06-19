@@ -1,5 +1,4 @@
 from functools import lru_cache
-
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -20,6 +19,12 @@ class Settings(BaseSettings):
     cors_allow_methods: str = "*"
     cors_allow_headers: str = "*"
     cors_allow_credentials: bool = False
+
+    db_user: str = "psql"
+    db_password: str = "psql"
+    db_host: str = "localhost"
+    db_port: str = "5432"
+    db_name: str = "entropydb"
 
     model_config = SettingsConfigDict(env_file=".env")
 

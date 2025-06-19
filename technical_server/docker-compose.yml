@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: postgres17
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: entropydb
+      POSTGRES_USER: psql
+      POSTGRES_PASSWORD: psql
+    ports:
+      - "5432:5432"
+    volumes:
+      - data:/var/lib/postgresql/data
+
+volumes:
+  data:
